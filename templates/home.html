@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+Your account balance is: {{ balance }}
+{% else %}
+Welcome, user!
+<br>
+<br>
+Please log in or register to fully access the system's features.
+{% endif %}
+
+{% endblock %}

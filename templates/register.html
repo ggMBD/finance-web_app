@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h3>Registration</h3>
+
+<form action="/accounts/register/" method="post" class="form horizontal well">{% csrf_token %}
+	
+		{{ form }}
+			<br>
+			<input type="submit" class="btn btn-inverse" value="Register">
+	
+</form>
+
+
+{% endblock %}

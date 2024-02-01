@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home Budget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap-responsive.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+ 
+<body>
+
+<div class="container" id="wrapper">
+
+    <div class="row">
+        <div class="topbar">
+            <div align="right">
+                {% if user.is_authenticated %}
+                    <p>You are logged in as {{ user.username }}</p>
+                    <a href="/accounts/logout/">Logout</a>
+                {% else %}
+                    <a href="/accounts/login/">Login</a> | <a href="/accounts/register/">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="mainmenu" class="navbar navbar-inverse"> 
+            <div class="navbar-inner">
+                <div>
+                    <a class="brand" href="/home">Home Page</a>
+                    {% if user.is_authenticated %}
+                        <ul class="nav">
+                            <li><a href="/incomes/">Incomes</a></li>
+                            <li><a href="/expenses/">Expenses</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span9 left_col">
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Shortcuts</li>
+                    <li class="add_p"><a href="/incomes/add/">Add Income</a></li>
+                    <li class="add_w"><a href="/expenses/add/">Add Expense</a></li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <div class="row">
+        <hr>
+        <div class="footer-wrap">
+            Created by MBD group
+            <br>
+        </div>
+    </div>
+
+</div>
+
+</body> 
+
+</html>

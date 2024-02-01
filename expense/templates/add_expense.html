@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+Add Expense
+<br>
+<form action="/expenses/add/" method="post" class="form horizontal well">{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" class="btn btn-inverse" name="submit" value="Add" />
+
+</form>
+
+{% endblock %}

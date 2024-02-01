@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div>
+    <p> 
+        <table id="table" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Amount </th>
+                    <th> Date </th>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for expense in expenses reversed %}
+                        <td> {{ expense.item }} </td>
+                        <td> {{ expense.amount }} </td>
+                        <td> {{ expense.date|date:" d/m/Y" }} </td>
+                        <td>
+                            <a class="btn btn-small btn-info" href="/expenses/{{ expense.id }}" style="float:left; margin-left: 10px">Details</a>
+                            <a class="btn btn-small btn-info" href="/expenses/delete/{{ expense.id }}" style="float:right"> delete</a>
+                        </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </p>
+
+    <script>
+        $(function(){
+            $("table").dataTable({
+                "oLanguage": {
+                    "sUrl": "//cdn.datatables.net/plug-ins/f2c75b7247b/i18n/English.json"
+                }
+            });
+        });
+    </script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<form action="/expenses/{{ expense.id }}/" method="post" class="form horizontal well">{% csrf_token %}
+	
+{{ form.as_p }}
+
+	<input type="submit" class="btn btn-inverse" value="Update">
+
+</form>
+
+{% endblock %}
