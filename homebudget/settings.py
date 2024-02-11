@@ -25,7 +25,7 @@ SECRET_KEY = 'T0/U1V2W3X4!Y5Z6$a7b8c9:d0,ef1g2%h3&i4(-j5_k6$l7*!m8n9o0pQ1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.18']
+ALLOWED_HOSTS = []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -81,10 +81,15 @@ WSGI_APPLICATION = 'homebudget.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',  # Or the database engine you're using
+        'NAME': 'finance-web_app',
+        'USER': 'finance_dev_user',
+        'PASSWORD': 'finance_password',
+        'HOST': 'localhost',
+        'PORT': '3306',  # Or the port your database server is running on
     }
 }
+
 
 
 # Password validation
