@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home),
+    path('', views.home),
 
     path('accounts/authorize/', views.authorize),
     path('accounts/login/', views.login),

@@ -16,7 +16,7 @@ def home(request):
             expenses = Expense.objects.filter(user=request.user).aggregate(Sum('amount')).get('amount__sum')
 
             balance = (incomes if incomes is not None else 0) - (expenses if expenses is not None else 0)
-
+            # query for diagram and graphs using chart.js
 
             return render(request,'home.html', {'balance' : balance })
         else:
